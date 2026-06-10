@@ -47,6 +47,7 @@ GROUP BY
     product_name,
     category,
     sub_category
+order by  total_revenue
 
 
 
@@ -86,3 +87,13 @@ SELECT
 FROM Mumbai_Retail_Sales_Data
 GROUP BY region
 ORDER BY profit_margin_pct DESC;
+
+--Missing one SQL query that interviewers almost always ask about — discount impact on profit:
+SELECT
+    discount,
+    COUNT(order_id) AS total_orders,
+    ROUND(AVG(profit), 2) AS avg_profit,
+    SUM(profit) AS total_profit
+FROM Mumbai_Retail_Sales_Data
+GROUP BY discount
+ORDER BY discount
